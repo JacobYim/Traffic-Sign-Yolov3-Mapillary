@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#
+dataset/mapilary/*
+dataset/organized_mapilary_dataset/*
+yolo/yolo_data/*
+label_matching.txt
+
+darknet/
