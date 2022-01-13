@@ -50,6 +50,12 @@ sed -i 's/filters=255/filters=18/g' darknet/cfg/yolov3_traffic_signal.cfg
 sed -i 's/classes=80/classes=1/g' darknet/cfg/yolov3_traffic_signal.cfg
 ```
 
+or 
+
+```
+cp config/yolov3_traffic_signal.cfg darknet/cfg/yolov3_traffic_signal.cfg
+```
+
 - build darknet
 ```
 # change makefile to have GPU and OPENCV enabled
@@ -57,7 +63,15 @@ sed -i 's/OPENCV=0/OPENCV=1/' darknet/Makefile
 sed -i 's/GPU=0/GPU=1/' darknet/Makefile
 sed -i 's/CUDNN=0/CUDNN=1/' darknet/Makefile
 sed -i 's/NVCC=nvcc/NVCC="/usr/local/cuda-11.5/bin/nvcc"' darknet/Makefile
+```
 
+or 
+
+```
+cp config/Makefile darknet/Makefile
+```
+
+```
 # verify CUDA
 /usr/local/cuda/bin/nvcc --version
 
