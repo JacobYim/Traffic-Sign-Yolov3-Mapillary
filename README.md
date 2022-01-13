@@ -85,3 +85,9 @@ make
 wget http://pjreddie.com/media/files/darknet53.conv.74
 wget https://pjreddie.com/media/files/yolov3.weights
 ./darknet detector train data/obj.data cfg/yolov3_traffic_signal.cfg darknet53.conv.74 -dont_show
+
+
+## Test
+./darknet detector map data/obj cfg/yolov3_traffic_signal.cfg backup/yolov3_traffic_signal_final.weights 
+./darknet detector map data/obj cfg/yolov3_traffic_signal.cfg backup/b32s8/yolov3_traffic_signal_final.weights 
+./darknet detector test data/obj.names cfg/yolov3_traffic_signal.cfg backup/b32s8/yolov3_traffic_signal_final.weights  -dont_show -ext_output < data/train.txt > result.txt
