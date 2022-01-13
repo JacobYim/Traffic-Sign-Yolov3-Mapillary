@@ -10,9 +10,7 @@ git clone https://github.com/AlexeyAB/darknet
 ```
 Download from https://www.mapillary.com/dataset/trafficsign and extract at dataset/mapilary
 ```
-
 data_organizer.py : raw dataset -> organizaed_dataset
-
 data_converter.py : organized_dataset -> yolo_data
 
 # Set Up Darknet
@@ -21,7 +19,6 @@ data_converter.py : organized_dataset -> yolo_data
 ```
 cp -r yolo/yolo_data darknet/data/obj
 ```
-
 
 - add darknet/data/obj.names
 ```
@@ -45,8 +42,8 @@ python generate_train_txt.py
 - make cfg file
 ```
 cp darknet/cfg/yolov3.cfg darknet/cfg/yolov3_traffic_signal.cfg
-sed -i 's/batch=1/batch=8/' darknet/cfg/yolov3_traffic_signal.cfg
-sed -i 's/subdivisions=1/subdivisions=1/' darknet/cfg/yolov3_traffic_signal.cfg
+sed -i 's/batch=1/batch=32/' darknet/cfg/yolov3_traffic_signal.cfg
+sed -i 's/subdivisions=1/subdivisions=8/' darknet/cfg/yolov3_traffic_signal.cfg
 sed -i 's/max_batches = 500200/max_batches = 2200/' darknet/cfg/yolov3_traffic_signal.cfg
 sed -i 's/steps=400000,450000/steps=1600,1800/' darknet/cfg/yolov3_traffic_signal.cfg
 sed -i 's/filters=255/filters=18/g' darknet/cfg/yolov3_traffic_signal.cfg
@@ -59,6 +56,7 @@ sed -i 's/classes=80/classes=1/g' darknet/cfg/yolov3_traffic_signal.cfg
 sed -i 's/OPENCV=0/OPENCV=1/' darknet/Makefile
 sed -i 's/GPU=0/GPU=1/' darknet/Makefile
 sed -i 's/CUDNN=0/CUDNN=1/' darknet/Makefile
+sed -i 's/NVCC=nvcc/NVCC="/usr/local/cuda-11.5/bin/nvcc"' darknet/Makefile
 
 # verify CUDA
 /usr/local/cuda/bin/nvcc --version
