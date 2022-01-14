@@ -132,7 +132,8 @@ dmypy.json
 dataset/mapilary/*
 dataset/organized_mapilary_dataset/*
 dataset/*
-yolo/yolo_data/*
+yolo/*
 label_matching.txt
 
 darknet/
+*.jpg
